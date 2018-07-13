@@ -28,6 +28,8 @@ class Gills:
         self.layer12 = ""
         self.layer13 = ""
         self.hyper = ""
+        self.mlat = ""
+        self.mlong = ""
 
         # win.geometry("640x480")
         def layer1():
@@ -101,6 +103,8 @@ class Gills:
             self.hyper = file
 
         def submit():
+            self.mlat = e11.get()
+            self.mlong = e22.get()
             win.destroy()
 
         layer1 = Button(win, text="Layer1", command=layer1)
@@ -136,8 +140,10 @@ class Gills:
         hyperfile.grid(column=1, row=8)
         Label(win, text="Latitude ").grid(row=9, column=0)
         Label(win, text="Longitude").grid(row=10, column=0)
-        e1 = Entry(win)
-        e2 = Entry(win)
+        e11 = tkinter.StringVar()
+        e22 = tkinter.StringVar()
+        e1 = Entry(win,textvariable=e11)
+        e2 = Entry(win,textvariable=e22)
         e1.grid(row=9, column=1)
         e2.grid(row=10, column=1)
         submit = Button(win, text="Submit", command=submit)
@@ -146,6 +152,8 @@ class Gills:
 
 
 k = Gills()
+print(k.mlat)
+print(k.mlong)
 print("Processing.....\n")
 b1 = Image.open(k.layer1)
 b2 = Image.open(k.layer2)
